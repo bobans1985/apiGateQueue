@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.VBox?>
+<?import ru.inversion.bicomp.tablecolumn.JInvTableColumnAccountNum?>
+<?import ru.inversion.fx.form.controls.JInvButton?>
+<?import ru.inversion.fx.form.controls.JInvLabel?>
+<?import ru.inversion.fx.form.controls.JInvTable?>
+<?import ru.inversion.fx.form.controls.JInvTableColumn?>
+<?import ru.inversion.fx.form.controls.JInvTableColumnBoolean?>
+<?import ru.inversion.fx.form.controls.JInvTableColumnDate?>
+<?import ru.inversion.fx.form.controls.JInvTableColumnMoney?>
+<?import ru.inversion.fx.form.controls.JInvToolBar?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.bobans.controller.ViewQueueController">
+    <children>
+        <JInvToolBar fx:id="toolBar" />
+        <JInvTable fx:id="tbl_Queue" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+            <columns>
+                <JInvTableColumn fx:id="id" fieldName="ID" prefWidth="35.0" text="ID" />
+                <JInvTableColumn fx:id="itrnnum" fieldName="ITRNNUM" prefWidth="60.0" text="itrnnum" />
+                <JInvTableColumn fx:id="itrnanum" fieldName="ITRNANUM" prefWidth="60.0" text="itrnanum" />
+                <JInvTableColumnDate fx:id="datetimecreate" fieldName="DATETIMECREATE" prefWidth="105.0" text="Дата и время" />
+                <JInvTableColumn fx:id="status" fieldName="STATUS" prefWidth="45.0" text="Статус" />
+                <JInvTableColumn fx:id="infotype" fieldName="INFOTYPE" prefWidth="40.0" text="Тип" />
+                <JInvTableColumnBoolean fx:id="roolback" fieldName="ROOLBACK" prefWidth="65.0" text="Откат (1)" />
+                <JInvTableColumnMoney fx:id="amount" fieldName="AMOUNT" prefWidth="60.0" text="Сумма" />
+                <JInvTableColumnMoney fx:id="amount_commis" fieldName="AMOUNT_COMMIS" prefWidth="90.0" text="Комиссия" />
+                <JInvTableColumnAccountNum fx:id="accd" fieldName="ACCD" prefWidth="200.0" text="Счет по дебету" />
+                <JInvTableColumn fx:id="curcoded" fieldName="CURCODED" prefWidth="75.0" text="Валюта Д" />
+                <JInvTableColumnAccountNum fx:id="accc" fieldName="ACCC" prefWidth="200.0" text="Счет по кредиту" />
+                <JInvTableColumn fx:id="curcodec" fieldName="CURCODEC" prefWidth="75.0" text="Валюта К" />
+                <JInvTableColumn fx:id="stream" fieldName="STREAM" prefWidth="185.0" text="Поток"/>
+
+
+                <JInvTableColumn fx:id="processingcode" fieldName="PROCESSINGCODE" prefWidth="70.0" text="Processing Code" visible="false"/>
+                <JInvTableColumn fx:id="auditnumber" fieldName="AUDITNUMBER" prefWidth="70.0" text="Audit Number" visible="false"/>
+                <JInvTableColumn fx:id="transactiondate" fieldName="TRANSACTIONDATE" prefWidth="70.0" text="Transaction Date" visible="false"/>
+                <JInvTableColumn fx:id="rrn" fieldName="RRN" prefWidth="70.0" text="Rrn" visible="false"/>
+                <JInvTableColumn fx:id="authorization" fieldName="AUTHORIZATION" prefWidth="70.0" text="Authorization" visible="false"/>
+                <!--<JInvTableColumn fx:id="request" fieldName="REQUEST" prefWidth="70.0" text="request"/>
+                <JInvTableColumn fx:id="response" fieldName="RESPONSE" prefWidth="70.0" text="response"/>-->
+            </columns>
+        </JInvTable>
+        <ButtonBar buttonMinWidth="80.0">
+            <buttons>
+                <Label fx:id="lbInterval" alignment="CENTER_RIGHT" text="0" textAlignment="RIGHT" />
+                <Slider fx:id="slInterval" blockIncrement="1" max="600" min="5" value="60" />
+               <!-- <BigDecimalField fx:id="numberInterval"  text="10" minValue="5" maxValue="50" onScrollFinished="#onChangeInterval"/>-->
+                <JInvButton fx:id="btAutoRefresh" onAction="#onAutoRefresh" text="Автообновление" />
+                <JInvButton fx:id="btEXIT" onAction="#onExit" text="Закрыть окно" />
+            </buttons>
+        </ButtonBar>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" />
+    </padding>
+</VBox>

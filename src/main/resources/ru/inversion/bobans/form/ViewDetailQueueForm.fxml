@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import ru.inversion.fx.form.controls.JInvButton?>
+<?import ru.inversion.fx.form.controls.JInvTable?>
+<?import ru.inversion.fx.form.controls.JInvTableColumn?>
+<?import ru.inversion.fx.form.controls.JInvTableColumnDate?>
+<?import ru.inversion.fx.form.controls.JInvTextArea?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.inversion.bobans.controller.ViewDetailQueueController">
+    <children>
+        <TabPane layoutX="11.0" layoutY="11.0" prefHeight="525.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE"
+                 AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="Детали">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <JInvTable fx:id="tbl_syslog" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <JInvTableColumn fx:id="id" fieldName="ID" prefWidth="51.0" text="ID"
+                                                         visible="false"/>
+                                        <JInvTableColumnDate fx:id="datetimecreate" fieldName="DATETIMECREATE"
+                                                             prefWidth="100.0" text="Дата и время"/>
+                                        <JInvTableColumn fx:id="txt" fieldName="TXT" prefWidth="390.0"
+                                                         text="Сообщение"/>
+                                        <JInvTableColumn fx:id="txtlob" fieldName="TXTLOB" prefWidth="390.0"
+                                                         sortable="false" text="Детали"/>
+                                        <JInvTableColumn fx:id="stream" fieldName="STREAM" minWidth="0.0"
+                                                         prefWidth="116.0" text="Поток" visible="false"/>
+                                    </columns>
+                                </JInvTable>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Запрос">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                            <children>
+                                <JInvTextArea fx:id="tReq" editable="false" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                              AnchorPane.topAnchor="0.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Ответ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                            <children>
+                                <JInvTextArea fx:id="tRes" editable="false" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                              AnchorPane.topAnchor="0.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label layoutX="750.0" layoutY="8.0" text="Статус">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lbStatus" layoutX="800.0" layoutY="8.0">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <ButtonBar buttonMinWidth="80.0" prefHeight="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0">
+            <buttons>
+                <JInvButton fx:id="btEXIT" onAction="#onExit" text="Закрыть"/>
+            </buttons>
+        </ButtonBar>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0"/>
+    </padding>
+</AnchorPane>
