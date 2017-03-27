@@ -22,7 +22,7 @@
             <columns>
                 <JInvTableColumn fx:id="id" fieldName="ID" prefWidth="35.0" text="ID" />
                 <JInvTableColumn fx:id="itrnnum" fieldName="ITRNNUM" prefWidth="60.0" text="itrnnum" />
-                <JInvTableColumn fx:id="itrnanum" fieldName="ITRNANUM" prefWidth="60.0" text="itrnanum" />
+                <JInvTableColumn fx:id="itrnanum" fieldName="ITRNANUM" prefWidth="60.0" text="itrnanum"  visible="false"/>
                 <JInvTableColumnDate fx:id="datetimecreate" fieldName="DATETIMECREATE" prefWidth="105.0" text="Дата и время" />
                 <JInvTableColumn fx:id="status" fieldName="STATUS" prefWidth="45.0" text="Статус" />
                 <JInvTableColumn fx:id="infotype" fieldName="INFOTYPE" prefWidth="40.0" text="Тип" />
@@ -30,9 +30,9 @@
                 <JInvTableColumnMoney fx:id="amount" fieldName="AMOUNT" prefWidth="60.0" text="Сумма" />
                 <JInvTableColumnMoney fx:id="amount_commis" fieldName="AMOUNT_COMMIS" prefWidth="90.0" text="Комиссия" />
                 <JInvTableColumnAccountNum fx:id="accd" fieldName="ACCD" prefWidth="200.0" text="Счет по дебету" />
-                <JInvTableColumn fx:id="curcoded" fieldName="CURCODED" prefWidth="75.0" text="Валюта Д" />
+                <JInvTableColumn fx:id="curcoded" fieldName="CURCODED" prefWidth="75.0" text="Валюта Д"   visible="false"/>
                 <JInvTableColumnAccountNum fx:id="accc" fieldName="ACCC" prefWidth="200.0" text="Счет по кредиту" />
-                <JInvTableColumn fx:id="curcodec" fieldName="CURCODEC" prefWidth="75.0" text="Валюта К" />
+                <JInvTableColumn fx:id="curcodec" fieldName="CURCODEC" prefWidth="75.0" text="Валюта К"  visible="false"/>
                 <JInvTableColumn fx:id="stream" fieldName="STREAM" prefWidth="185.0" text="Поток"/>
 
 

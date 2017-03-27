@@ -27,9 +27,9 @@ import java.util.Map;
 /**
  * Created by GrishukovVM on 13.03.2017.
  */
-public class queueBlock extends GemTableBlock<apigateQueue> {
+public class queueBlock extends GemTableBlock<ViewQueueController,apigateQueue> {
 
-    public queueBlock(GemController pController, JInvTable pTable) {
+    public queueBlock(ViewQueueController pController, JInvTable pTable) {
         super(pController, pTable);
     }
 
@@ -44,7 +44,7 @@ public class queueBlock extends GemTableBlock<apigateQueue> {
         this.getDataSet().setOrderBy("ID desc");
         this.getDataSet().setRowClass(apigateQueue.class);
         DSFXAdapter lDSAdapter = DSFXAdapter.bind(this.getDataSet(), this.getTable(), (ICellValueChangeListener) null, false);
-        this.bindControls(lDSAdapter);
+       // this.bindControls(lDSAdapter);
         //this.setFieldsGName(new String[]{"id"});
         this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
                 this.createActionButton(GemAction.ACTION_RECORD_VIEW, Boolean.valueOf(false)),

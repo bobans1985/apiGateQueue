@@ -129,6 +129,7 @@ public class ViewQueueController extends GemController {
         } else {
             timer.cancel();
             timer.purge();
+            timer=null;
             btAutoRefresh.setText("Автообновление");
             slInterval.setDisable(false);
             System.out.println("Disable autorefresh");

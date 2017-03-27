@@ -11,9 +11,9 @@ import ru.inversion.fxgem.ui.controller.block.GemTableBlock;
 /**
  * Created by GrishukovVM on 15.03.2017.
  */
-public class detailBlock extends GemTableBlock<SysLog> {
+public class detailBlock extends GemTableBlock<ViewDetailQueueController,SysLog> {
 
-    public detailBlock(GemController pController, JInvTable pTable) {
+    public detailBlock(ViewDetailQueueController pController, JInvTable pTable) {
         super(pController, pTable);
     }
 
@@ -31,7 +31,7 @@ public class detailBlock extends GemTableBlock<SysLog> {
         }
 
         DSFXAdapter lDSAdapter = DSFXAdapter.bind(this.getDataSet(), this.getTable());
-        this.bindControls(lDSAdapter);
+        //this.bindControls(lDSAdapter);
         this.refresh();
     }
 }
