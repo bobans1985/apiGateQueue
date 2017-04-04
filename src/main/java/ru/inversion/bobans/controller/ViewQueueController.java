@@ -94,10 +94,12 @@ public class ViewQueueController extends GemController {
             @Override
             protected void updateItem(Integer item, boolean empty) {
                 super.updateItem(item, empty);
-                if ((!isEmpty()) && (getItem() == 0)) {
+                if ((item != null && !isEmpty()) && (getItem() == 0)) {
                     setText("Нет");
-                } else if ((!isEmpty()) && (getItem() == 1)) {
+                } else if ((item != null && !isEmpty()) && (getItem() == 1)) {
                     setText("ДА");
+                } else if (item == null) {
+                    setText("");
                 }
             }
         });

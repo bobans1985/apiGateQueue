@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -17,7 +18,6 @@ import ru.inversion.dataset.fx.ICellValueChangeListener;
 import ru.inversion.fx.form.AbstractBaseController;
 import ru.inversion.fx.form.controls.JInvTable;
 import ru.inversion.fxgem.ui.GemCall;
-import ru.inversion.fxgem.ui.controller.GemController;
 import ru.inversion.fxgem.ui.controller.action.GemAction;
 import ru.inversion.fxgem.ui.controller.block.GemTableBlock;
 
@@ -46,11 +46,17 @@ public class queueBlock extends GemTableBlock<ViewQueueController,apigateQueue> 
         DSFXAdapter lDSAdapter = DSFXAdapter.bind(this.getDataSet(), this.getTable(), (ICellValueChangeListener) null, false);
        // this.bindControls(lDSAdapter);
         //this.setFieldsGName(new String[]{"id"});
+
+        //Включаем тулбар с фильтром
+        lDSAdapter.setEnableFilter (true, "QUEUESRCH", "QUEUE");
+
+        //Включаем свой тулбар
         this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
                 this.createActionButton(GemAction.ACTION_RECORD_VIEW, Boolean.valueOf(false)),
+                new Separator(),
                 this.createActionButton(GemAction.ACTION_ABOUT, Boolean.valueOf(false))
         });
-        this.refresh();
+        refresh();
     }
 
     @Override
