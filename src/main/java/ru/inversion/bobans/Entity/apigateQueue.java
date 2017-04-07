@@ -1,9 +1,6 @@
 package ru.inversion.bobans.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +11,11 @@ import java.time.LocalDateTime;
 @Entity(
         name = "ru.inversion.bobans.Entity.bobans_apigate_queue"
 )
-@Table(name="bobans_apigate_queue")
+//@Table(name="bobans_apigate_queue")
+@NamedNativeQuery(name = "ru.inversion.bobans.Entity.bobans_apigate_queue", query = "SELECT a.*,"
+        + " (select nvl(ccusname_sh,ccusname) from acc,cus where caccacc=a.AccD and iacccus=icusnum) as CLIENTFROMNAME, "
+        + " (select nvl(ccusname_sh,ccusname) from acc,cus where caccacc=a.AccC and iacccus=icusnum) as CLIENTTONAME "
+        + " from bobans_apigate_queue a ")
 public class apigateQueue implements Serializable {
 
     private Long ID;
@@ -40,6 +41,9 @@ public class apigateQueue implements Serializable {
     private String TRANSACTIONDATE;
     private String RRN;
     private String AUTHORIZATION;
+
+    private String CLIENTFROMNAME;
+    private String CLIENTTONAME;
 
     public apigateQueue() {
     }
@@ -241,5 +245,23 @@ public class apigateQueue implements Serializable {
 
     public void setAUTHORIZATION(String AUTHORIZATION) {
         this.AUTHORIZATION = AUTHORIZATION;
+    }
+
+    public String getCLIENTFROMNAME() {
+        return CLIENTFROMNAME;
+    }
+
+    @Column(name = "CLIENTFROMNAME")
+    public void setCLIENTFROMNAME(String CLIENTFROMNAME) {
+        this.CLIENTFROMNAME = CLIENTFROMNAME;
+    }
+
+    public String getCLIENTTONAME() {
+        return CLIENTTONAME;
+    }
+
+    @Column(name = "CLIENTTONAME")
+    public void setCLIENTTONAME(String CLIENTTONAME) {
+        this.CLIENTTONAME = CLIENTTONAME;
     }
 }

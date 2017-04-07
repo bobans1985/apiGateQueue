@@ -17,7 +17,9 @@ import ru.inversion.dataset.fx.DSFXAdapter;
 import ru.inversion.dataset.fx.ICellValueChangeListener;
 import ru.inversion.fx.form.AbstractBaseController;
 import ru.inversion.fx.form.controls.JInvTable;
+import ru.inversion.fxgem.ads.ui.controller.call.TrnCall;
 import ru.inversion.fxgem.ui.GemCall;
+import ru.inversion.fxgem.ui.controller.GemController;
 import ru.inversion.fxgem.ui.controller.action.GemAction;
 import ru.inversion.fxgem.ui.controller.block.GemTableBlock;
 
@@ -27,7 +29,7 @@ import java.util.Map;
 /**
  * Created by GrishukovVM on 13.03.2017.
  */
-public class queueBlock extends GemTableBlock<ViewQueueController,apigateQueue> {
+public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue> {
 
     public queueBlock(ViewQueueController pController, JInvTable pTable) {
         super(pController, pTable);
@@ -44,15 +46,17 @@ public class queueBlock extends GemTableBlock<ViewQueueController,apigateQueue> 
         this.getDataSet().setOrderBy("ID desc");
         this.getDataSet().setRowClass(apigateQueue.class);
         DSFXAdapter lDSAdapter = DSFXAdapter.bind(this.getDataSet(), this.getTable(), (ICellValueChangeListener) null, false);
-       // this.bindControls(lDSAdapter);
+        // this.bindControls(lDSAdapter);
         //this.setFieldsGName(new String[]{"id"});
 
         //Включаем тулбар с фильтром
-        lDSAdapter.setEnableFilter (true, "QUEUESRCH", "QUEUE");
+        lDSAdapter.setEnableFilter(true, "QUEUESRCH", "QUEUE");
 
         //Включаем свой тулбар
         this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
+                this.createActionButton(GemAction.ACTION_RECORD_SHOW, Boolean.valueOf(false)),
                 this.createActionButton(GemAction.ACTION_RECORD_VIEW, Boolean.valueOf(false)),
+
                 new Separator(),
                 this.createActionButton(GemAction.ACTION_ABOUT, Boolean.valueOf(false))
         });
@@ -83,9 +87,17 @@ public class queueBlock extends GemTableBlock<ViewQueueController,apigateQueue> 
     }
 
 
+    public void showRecord() throws Exception {
+        System.out.println("Start show trn");
+        apigateQueue lEntity = this.getDataSet().getCurrentRow();
+        String whereClauses = " itrnnum=" + lEntity.getITRNNUM() + " and itrnanum=" + lEntity.getITRNANUM();
+        System.out.println("whereClauses:" + whereClauses);
+        TrnCall.showTrnForm(getController(), GemController.FormModeEnum.VM_SHOW, whereClauses, true, null);
+    }
+
+
     public void showAbout() throws Exception {
         System.out.println("Start about form");
-
         Stage dialogStage = new Stage();
         dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setTitle("About form");
