@@ -54,8 +54,8 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
 
         //Включаем свой тулбар
         this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
-                this.createActionButton(GemAction.ACTION_RECORD_SHOW, Boolean.valueOf(false)),
-                this.createActionButton(GemAction.ACTION_RECORD_VIEW, Boolean.valueOf(false)),
+                this.createActionButton(GemAction.ACTION_RECORD_SHOW, "Псомотреть проводку", Boolean.valueOf(false)),
+                this.createActionButton(GemAction.ACTION_RECORD_VIEW, "Посмотреть детализацию из лога",Boolean.valueOf(false)),
 
                 new Separator(),
                 this.createActionButton(GemAction.ACTION_ABOUT, Boolean.valueOf(false))
