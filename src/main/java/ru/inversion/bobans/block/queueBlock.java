@@ -73,9 +73,9 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
     public void viewRecord() throws Exception {
         //Отключаем таймер рефреша
         ViewQueueController cntl = getController();
-        if (cntl.getTimer() != null) {
+        /*if (cntl.getTimer() != null) {
             cntl.onAutoRefresh();
-        }
+        }*/
         apigateQueue lEntity = this.getDataSet().getCurrentRow();
         if (lEntity != null) {
             GemCall.showForm(cntl.getTaskContext(), cntl.getViewContext(), ViewDetailQueueController.class, AbstractBaseController.FormModeEnum.VM_EDIT,

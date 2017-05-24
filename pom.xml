@@ -10,6 +10,7 @@
     <packaging>jar</packaging>
     <properties>
         <jdk.version>1.8</jdk.version>
+        <japp.dir>/C:/Inversion/ODB/JAPP</japp.dir>
     </properties>
 
     <build>
@@ -36,10 +37,10 @@
                             <Implementation-Title>${project.name}</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
                             <Specification-Version>${project.version}</Specification-Version>
-                            <Class-Path>JInvFore.jar FXbicomp.jar jinvfx-gem.jar</Class-Path>
+                            <Class-Path>${japp.dir}/JInvFore.jar ${japp.dir}/FXbicomp.jar ${japp.dir}/jinvfx-gem.jar</Class-Path>
                         </manifestEntries>
                         <manifest>
-                            <addClasspath>true</addClasspath>
+                            <!--<addClasspath>true</addClasspath>-->
                             <mainClass>ru.inversion.bobans.App</mainClass>
                         </manifest>
                     </archive>
@@ -52,11 +53,6 @@
 
     <dependencies>
         <!-- jpa realization -->
-       <!-- <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>-->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
