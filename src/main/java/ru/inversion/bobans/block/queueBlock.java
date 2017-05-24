@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import ru.inversion.bobans.Entity.apigateQueue;
 import ru.inversion.bobans.controller.ViewDetailQueueController;
 import ru.inversion.bobans.controller.ViewQueueController;
+import ru.inversion.bobans.controller.UnloadController;
 import ru.inversion.dataset.fx.DSFXAdapter;
 import ru.inversion.dataset.fx.ICellValueChangeListener;
 import ru.inversion.fx.form.AbstractBaseController;
@@ -54,8 +55,11 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
 
         //Включаем свой тулбар
         this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
-                this.createActionButton(GemAction.ACTION_RECORD_SHOW, "Псомотреть проводку", Boolean.valueOf(false)),
-                this.createActionButton(GemAction.ACTION_RECORD_VIEW, "Посмотреть детализацию из лога",Boolean.valueOf(false)),
+                this.createActionButton(GemAction.ACTION_RECORDS_TRN_SHOW, "Поcмотреть проводку", Boolean.valueOf(false)),
+                this.createActionButton(GemAction.ACTION_LOG, "Посмотреть детализацию из лога", Boolean.valueOf(false)),
+
+                new Separator(),
+                this.createActionButton(GemAction.ACTION_RESPONSES_LOAD,"Выгрузить операцию в ПЦ", Boolean.valueOf(false)),
 
                 new Separator(),
                 this.createActionButton(GemAction.ACTION_ABOUT, Boolean.valueOf(false))
@@ -70,7 +74,7 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
     }
 
 
-    public void viewRecord() throws Exception {
+    public void showLog() throws Exception {
         //Отключаем таймер рефреша
         ViewQueueController cntl = getController();
         /*if (cntl.getTimer() != null) {
@@ -87,7 +91,7 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
     }
 
 
-    public void showRecord() throws Exception {
+    public void showRecordsTrn() throws Exception {
         System.out.println("Start show trn");
         apigateQueue lEntity = this.getDataSet().getCurrentRow();
         String whereClauses = " itrnnum=" + lEntity.getITRNNUM() + " and itrnanum=" + lEntity.getITRNANUM();
@@ -120,6 +124,14 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
 
         dialogStage.setScene(new Scene(vbox));
         dialogStage.show();
+    }
+
+    public void loadResponses(){
+        System.out.println("Run unload form");
+        GemCall.showForm(getController().getTaskContext(), getController().getViewContext(), UnloadController.class, AbstractBaseController.FormModeEnum.VM_SHOW,
+                Boolean.valueOf(true), Boolean.valueOf(false), null, (Map) null, (pFormReturnEnum, pController) -> {
+                    this.handleCallEntityForm(pFormReturnEnum, pController);
+                });
     }
 
 }

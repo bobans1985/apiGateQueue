@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sql_expr_list>
+    <expression name="bobans_ApiGate.toApiGate" lang = "PL/SQL">
+        <script><![CDATA[
+DECLARE
+    roolback_p BOOLEAN:=false;
+BEGIN
+    /*Прослойка для конвертации строки в булеан*/
+    if (:p_roolback='true') then
+        roolback_p:=true;
+    end if;
+    Bobans_ApiGate.toApiGate (inum      => :p_trnnum,
+                              ianum     => :p_trnanum,
+                              roolback  => roolback_p );
+END;]]></script>
+        <parameters>
+<!--            <parameter name="P_TRNNUM" mode="IN" sqlType="BIGINT" javaType="int"/>
+            <parameter name="P_TRNANUM" mode="IN" sqlType="BIGINT" javaType="int"/>
+            <parameter name="P_ROOLBACK" mode="IN" sqlType="BOOLEAN" javaType="Boolean" />-->
+        </parameters>
+    </expression>
+</sql_expr_list>

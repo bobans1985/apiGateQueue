@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import jfxtras.labs.scene.control.BigDecimalField?>
+<?import ru.inversion.fx.form.controls.JInvButton?>
+<?import ru.inversion.fx.form.controls.JInvLabel?>
+<?import ru.inversion.fx.form.controls.combobox.JInvComboBoxSimple?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="233.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.bobans.controller.UnloadController">
+    <children>
+      <BigDecimalField fx:id="p_trnnum" layoutX="114.0" layoutY="14.0" prefHeight="25.0" prefWidth="107.0" promptText="0" text="0"/>
+      <JInvComboBoxSimple fx:id="p_roolback" layoutX="140.0" layoutY="83.0" prefHeight="25.0" prefWidth="81.0" />
+      <BigDecimalField fx:id="p_trnanum" layoutX="140.0" layoutY="49.0" prefHeight="27.0" prefWidth="81.0" promptText="0" text="0" />
+      <JInvLabel layoutX="17.0" layoutY="18.0" text="iTrnNum" />
+      <JInvLabel layoutX="17.0" layoutY="54.0" text="iTrnANum" />
+      <JInvLabel layoutX="17.0" layoutY="87.0" text="Признак отката" />
+       <ButtonBar buttonMinWidth="80.0" layoutX="12.0" layoutY="141.0" prefHeight="32.0" prefWidth="419.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="8.0">
+            <buttons>
+                <JInvButton fx:id="btRun" onAction="#onRun" text="Выполнить" />
+                <JInvButton fx:id="btEXIT" onAction="#onExit" text="Закрыть" />
+            </buttons>
+        </ButtonBar>
+    </children>
+</AnchorPane>

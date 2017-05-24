@@ -108,7 +108,7 @@ public class ViewQueueController extends GemController {
             if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
                 System.out.println(tbl_Queue.getSelectionModel().getSelectedItem());
                 try {
-                    block_Queue.viewRecord();
+                    block_Queue.showLog();
                 } catch (Exception ex) {
 
                 }
