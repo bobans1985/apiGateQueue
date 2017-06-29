@@ -54,7 +54,20 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
         lDSAdapter.setEnableFilter(true, "QUEUESRCH", "QUEUE");
 
         //Включаем свой тулбар
-        this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
+        this.getToolBar().getItems().addAll(
+                this.getActionHandler().createActionButton(GemAction.ACTION_REFRESH, false),
+                this.getActionHandler().createActionButton(GemAction.ACTION_RECORDS_TRN_SHOW, "Поcмотреть проводку", "Поcмотреть проводку", false),
+                this.getActionHandler().createActionButton(GemAction.ACTION_LOG_SHOW, null, "Посмотреть детализацию из лога", false),
+
+                new Separator(),
+                this.getActionHandler().createActionButton(GemAction.ACTION_RESPONSES_LOAD, null, "Выгрузить операцию в ПЦ", false),
+
+                new Separator(),
+                this.getActionHandler().createActionButton(GemAction.ACTION_ABOUT_SHOW, false)
+
+        );
+
+        /*this.getToolBar().getItems().addAll(new Node[]{this.createActionButton(GemAction.ACTION_REFRESH, Boolean.valueOf(false)),
                 this.createActionButton(GemAction.ACTION_RECORDS_TRN_SHOW, "Поcмотреть проводку", Boolean.valueOf(false)),
                 this.createActionButton(GemAction.ACTION_LOG, "Посмотреть детализацию из лога", Boolean.valueOf(false)),
 
@@ -63,7 +76,7 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
 
                 new Separator(),
                 this.createActionButton(GemAction.ACTION_ABOUT, Boolean.valueOf(false))
-        });
+        });*/
         refresh();
     }
 
@@ -126,7 +139,7 @@ public class queueBlock extends GemTableBlock<ViewQueueController, apigateQueue>
         dialogStage.show();
     }
 
-    public void loadResponses(){
+    public void loadResponses() {
         System.out.println("Run unload form");
         GemCall.showForm(getController().getTaskContext(), getController().getViewContext(), UnloadController.class, AbstractBaseController.FormModeEnum.VM_SHOW,
                 Boolean.valueOf(true), Boolean.valueOf(false), null, (Map) null, (pFormReturnEnum, pController) -> {

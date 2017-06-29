@@ -37,7 +37,7 @@
                             <Implementation-Title>${project.name}</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
                             <Specification-Version>${project.version}</Specification-Version>
-                            <Class-Path>${japp.dir}/JInvFore.jar ${japp.dir}/FXbicomp.jar ${japp.dir}/jinvfx-gem.jar</Class-Path>
+                            <Class-Path>${japp.dir}/JInvFore.jar ${japp.dir}/FXbicomp.jar ${japp.dir}/jinvfx-gem.jar ${japp.dir}/FXPdoc.jar</Class-Path>
                         </manifestEntries>
                         <manifest>
                             <!--<addClasspath>true</addClasspath>-->
